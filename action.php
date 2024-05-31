@@ -43,6 +43,7 @@ class action_plugin_googleconsentmananger extends ActionPlugin
             '_data' => "
             window.dataLayer = window.dataLayer || [];
             function gtag() { dataLayer.push(arguments); }
+            gtag('config', '${GTMID}');
             gtag('consent', 'default', {
                 'ad_user_data': 'denied',
                 'ad_personalization': 'denied',
@@ -51,7 +52,6 @@ class action_plugin_googleconsentmananger extends ActionPlugin
                 'wait_for_update': 500,
             });
             gtag('js', new Date());
-            gtag('config', '${GTMID}');
             ",
         );
     }
