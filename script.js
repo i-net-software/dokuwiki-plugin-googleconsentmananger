@@ -41,6 +41,7 @@ jQuery(function(){(function($) {
         return ( LANG.template && LANG.template[ JSINFO.plugins.googleconsent.template ] ? LANG.template[ JSINFO.plugins.googleconsent.template ][ name ] : undefined ) || JSINFO.plugins.googleconsent[name];
     };
 
+    
     $.cookieBar({
         fixed:              true,
         autoEnable:         false,
