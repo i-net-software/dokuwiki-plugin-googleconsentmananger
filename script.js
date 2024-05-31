@@ -1,6 +1,6 @@
 /* DOKUWIKI:include jquery.cookiebar.js */
 
-(function ($) {
+jQuery(function(){(function($) {
     /** wrapping GA functions */
     window.ga = function () {
         if ('show' != JSINFO.ACT) {
@@ -73,4 +73,4 @@
         j.src = '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
     })(window, document, 'script', 'dataLayer', window.dataLayer[0][1] );
 
-})(jQuery);
+})(jQuery);});
