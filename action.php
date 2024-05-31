@@ -32,7 +32,10 @@ class action_plugin_googleconsentmananger extends ActionPlugin
     public function handleDokuwikiStarted(Event $event, $param)
     {
         global $JSINFO;
-        $JSINFO['plugins']['googleconsent'] = array ();
+        global $conf;
+        $JSINFO['plugins']['googleconsent'] = array (
+            'template' => $conf['template'],
+        );
         $this->addConfig( 'acceptBody' );
         $this->addConfig( 'acceptButton' );
         $this->addConfig( 'declineButton' );

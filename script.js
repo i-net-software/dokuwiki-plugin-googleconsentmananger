@@ -37,26 +37,30 @@
         });
     };
 
+    var getTemplateOrPluginOption = function ( name ) {
+        return ( LANG.template && LANG.template[ JSINFO.plugins.googleconsent.template ] ? LANG.template[ JSINFO.plugins.googleconsent.template ][ name ] : undefined ) || JSINFO.plugins.googleconsent[name];
+    };
+
     $.cookieBar({
         fixed:              true,
         autoEnable:         false,
         bottom:             true,
         forceShow:          true,
 
-        message:            JSINFO.plugins.googleconsent.acceptBody,
-        acceptText:         JSINFO.plugins.googleconsent.acceptButton,
-        acceptButton:       !!JSINFO.plugins.googleconsent.acceptButton,
-        declineText:        JSINFO.plugins.googleconsent.declineButton,
-        declineButton:      !!JSINFO.plugins.googleconsent.declineButton,
-        policyText:         JSINFO.plugins.googleconsent.policyButton,
-        policyButton:       !!JSINFO.plugins.googleconsent.policyButton,
-        policyURL:          JSINFO.plugins.googleconsent.policyURL,
-        acceptOnContinue:   !!JSINFO.plugins.googleconsent.acceptOnContinue,
-        acceptOnScroll:     !!JSINFO.plugins.googleconsent.acceptOnScroll,
-        acceptAnyClick:     !!JSINFO.plugins.googleconsent.acceptAnyClick,
-        expireDays:         !!JSINFO.plugins.googleconsent.expireDays,
-        renewOnVisit:       !!JSINFO.plugins.googleconsent.renewOnVisit,
-        forceShow:          !!JSINFO.plugins.googleconsent.forceShow,
+        message:            getTemplateOrPluginOption('acceptBody'),
+        acceptText:         getTemplateOrPluginOption('acceptButton'),
+        acceptButton:       !!getTemplateOrPluginOption('acceptButton'),
+        declineText:        getTemplateOrPluginOption('declineButton'),
+        declineButton:      !!getTemplateOrPluginOption('declineButton'),
+        policyText:         getTemplateOrPluginOption('policyButton'),
+        policyButton:       !!getTemplateOrPluginOption('policyButton'),
+        policyURL:          getTemplateOrPluginOption('policyURL'),
+        acceptOnContinue:   !!getTemplateOrPluginOption('acceptOnContinue'),
+        acceptOnScroll:     !!getTemplateOrPluginOption('acceptOnScroll'),
+        acceptAnyClick:     !!getTemplateOrPluginOption('acceptAnyClick'),
+        expireDays:         !!getTemplateOrPluginOption('expireDays'),
+        renewOnVisit:       !!getTemplateOrPluginOption('renewOnVisit'),
+        forceShow:          !!getTemplateOrPluginOption('forceShow'),
 
         acceptFunction:     consentGiven,
         declineFunction:    consentDenied,
