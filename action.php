@@ -18,6 +18,40 @@ class action_plugin_googleconsentmananger extends ActionPlugin
     public function register(EventHandler $controller)
     {
         $controller->register_hook('TPL_METAHEADER_OUTPUT', 'BEFORE', $this, 'handleTplMetaheaderOutput');
+        $controller->register_hook('DOKUWIKI_STARTED', 'AFTER', $this, 'handleDokuwikiStarted');
+    }
+
+    /**
+     * Event handler for DOKUWIKI_STARTED
+     *
+     * @see https://www.dokuwiki.org/devel:events:DOKUWIKI_STARTED
+     * @param Event $event Event object
+     * @param mixed $param optional parameter passed when event was registered
+     * @return void
+     */
+    public function handleDokuwikiStarted(Event $event, $param)
+    {
+        global $JSINFO;
+        $JSINFO['plugins']['googleconsent'] = array ();
+        $this->addConfig( 'acceptBody' );
+        $this->addConfig( 'acceptButton' );
+        $this->addConfig( 'declineButton' );
+        $this->addConfig( 'policyButton' );
+        $this->addConfig( 'policyURL' );
+        $this->addConfig( 'acceptOnContinue' );
+        $this->addConfig( 'acceptOnScroll' );
+        $this->addConfig( 'acceptAnyClick' );
+        $this->addConfig( 'expireDays' );
+        $this->addConfig( 'renewOnVisit' );
+        $this->addConfig( 'forceShow' );
+    }
+
+    private function addConfig( $valueName ) {
+        global $JSINFO;
+        $value = $this->getConf($valueName);
+        if ( !empty( $value ) ) {
+            $JSINFO['plugins']['googleconsent'][$valueName] = $value;
+        }
     }
 
     /**
