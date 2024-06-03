@@ -73,7 +73,7 @@ jQuery(function(){(function($) {
 
         acceptFunction:     consentGiven,
         declineFunction:    consentDenied,
-    })
+    });
 
     $.cookieBar( 'cookies' ) && consentGiven( 'accepted' );
 
