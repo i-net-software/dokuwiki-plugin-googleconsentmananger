@@ -26,6 +26,13 @@ jQuery(function(){(function($) {
             ad_storage: 'granted',
             analytics_storage: 'granted'
         });
+
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({'gtm.start':new Date().getTime(), event: 'gtm.js'});
+            var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true;
+            j.src = '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', window.dataLayer[0][1] );
     };
 
     var consentDenied = function ( cookieValue ) {
@@ -66,13 +73,8 @@ jQuery(function(){(function($) {
 
         acceptFunction:     consentGiven,
         declineFunction:    consentDenied,
-    }) && consentGiven( 'accepted' );
+    })
 
-    (function (w, d, s, l, i) {
-        w[l] = w[l] || []; w[l].push({'gtm.start':new Date().getTime(), event: 'gtm.js'});
-        var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true;
-        j.src = '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', window.dataLayer[0][1] );
+    $.cookieBar( 'cookies' ) && consentGiven( 'accepted' );
 
 })(jQuery);});
