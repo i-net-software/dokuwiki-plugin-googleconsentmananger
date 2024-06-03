@@ -20,7 +20,7 @@ jQuery(function(){(function($) {
     }
 
     var consentGiven = function ( cookieValue ) {
-        cookieValue == 'accepted' && gtag('consent', 'update', {
+        cookieValue == 'accepted' && typeof window.gtag === 'function' && gtag('consent', 'update', {
             ad_user_data: 'granted',
             ad_personalization: 'granted',
             ad_storage: 'granted',
@@ -36,7 +36,7 @@ jQuery(function(){(function($) {
     };
 
     var consentDenied = function ( cookieValue ) {
-        cookieValue != 'accepted' && gtag('consent', 'update', {
+        cookieValue != 'accepted' && typeof window.gtag === 'function' && gtag('consent', 'update', {
             ad_user_data: 'denied',
             ad_personalization: 'denied',
             ad_storage: 'denied',
