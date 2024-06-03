@@ -47,6 +47,7 @@ jQuery(function(){(function($) {
         autoEnable:         false,
         bottom:             true,
         forceShow:          true,
+        appoend:            true,
 
         message:            getTemplateOrPluginOption('acceptBody'),
         acceptText:         getTemplateOrPluginOption('acceptButton'),
