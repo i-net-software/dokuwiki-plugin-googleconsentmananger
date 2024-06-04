@@ -25,9 +25,9 @@ jQuery(function(){(function($) {
             ad_user_data: 'granted',
             ad_personalization: 'granted',
             analytics_storage: 'granted',
-            functional_storage: 'granted',
+            /*functional_storage: 'granted',
             personalization_storage: 'granted',
-            security_storage: 'granted',
+            security_storage: 'granted',*/
         });
     };
 
