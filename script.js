@@ -20,27 +20,26 @@ jQuery(function(){(function($) {
     }
 
     var consentGiven = function ( cookieValue ) {
-        cookieValue == 'accepted' && typeof window.gtag === 'function' && gtag('consent', 'update', {
+        typeof window.gtag === 'function' && gtag('consent', 'update', {
+            ad_storage: 'granted',
             ad_user_data: 'granted',
             ad_personalization: 'granted',
-            ad_storage: 'granted',
-            analytics_storage: 'granted'
+            analytics_storage: 'granted',
+            functional_storage: 'granted',
+            personalization_storage: 'granted',
+            security_storage: 'granted',
         });
-
-        (function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({'gtm.start':new Date().getTime(), event: 'gtm.js'});
-            var f = d.getElementsByTagName(s)[0],
-            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true;
-            j.src = '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', window.dataLayer[0][1] );
     };
 
     var consentDenied = function ( cookieValue ) {
-        cookieValue != 'accepted' && typeof window.gtag === 'function' && gtag('consent', 'update', {
+        typeof window.gtag === 'function' && gtag('consent', 'update', {
+            ad_storage: 'denied',
             ad_user_data: 'denied',
             ad_personalization: 'denied',
-            ad_storage: 'denied',
-            analytics_storage: 'denied'
+            analytics_storage: 'denied',
+            functional_storage: 'denied',
+            personalization_storage: 'denied',
+            security_storage: 'denied',
         });
     };
 
@@ -74,6 +73,13 @@ jQuery(function(){(function($) {
         acceptFunction:     consentGiven,
         declineFunction:    consentDenied,
     });
+
+    (function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({'gtm.start':new Date().getTime(), event: 'gtm.js'});
+        var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true;
+        j.src = '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', window.dataLayer[0][1] );
 
     $.cookieBar( 'cookies' ) && consentGiven( 'accepted' );
 
